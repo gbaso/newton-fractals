@@ -55,4 +55,8 @@ public record Complex(double real, double imaginary) {
         return "(" + real + ", " + imaginary + ")";
     }
 
+    public static boolean equals(Complex z1, Complex z2, double eps) {
+        return Math.abs(z1.real - z2.real) <= eps && Math.abs(z1.imaginary - z2.imaginary) <= eps;
+    }
+
 }

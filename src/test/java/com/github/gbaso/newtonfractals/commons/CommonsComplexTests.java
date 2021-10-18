@@ -3,7 +3,6 @@ package com.github.gbaso.newtonfractals.commons;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.math3.complex.Complex;
-import org.assertj.core.api.AbstractDoubleAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -83,7 +82,7 @@ class CommonsComplexTests {
         var z1 = new Complex(x1, y1);
         var z2 = new Complex(x2, y2);
         var expected = new Complex(rx, ry);
-        assertAboutEquals(z1.add(z2), expected);
+        assertThat(aboutEquals(z1.add(z2), expected)).isTrue();
     }
 
     @ParameterizedTest
@@ -98,7 +97,7 @@ class CommonsComplexTests {
     void square(double x, double y, double rx, double ry) {
         var z = new Complex(x, y);
         var expected = new Complex(rx, ry);
-        assertAboutEquals(z.multiply(z), expected);
+        assertThat(aboutEquals(z.multiply(z), expected)).isTrue();
     }
 
     @ParameterizedTest
@@ -112,7 +111,7 @@ class CommonsComplexTests {
     void reciprocal(double x, double y, double rx, double ry) {
         var z = new Complex(x, y);
         var expected = new Complex(rx, ry);
-        assertAboutEquals(z.reciprocal(), expected);
+        assertThat(aboutEquals(z.reciprocal(), expected)).isTrue();
     }
 
     @ParameterizedTest
@@ -130,7 +129,7 @@ class CommonsComplexTests {
     void multiply(double x, double y, double factor, double rx, double ry) {
         var z = new Complex(x, y);
         var expected = new Complex(rx, ry);
-        assertAboutEquals(z.multiply(factor), expected);
+        assertThat(aboutEquals(z.multiply(factor), expected)).isTrue();
     }
 
     @ParameterizedTest
@@ -145,15 +144,11 @@ class CommonsComplexTests {
         var z1 = new Complex(x1, y1);
         var z2 = new Complex(x2, y2);
         var expected = new Complex(rx, ry);
-        assertAboutEquals(z1.divide(z2), expected);
+        assertThat(aboutEquals(z1.divide(z2), expected)).isTrue();
     }
 
-    AbstractDoubleAssert<?> assertAboutEquals(Complex actual, Complex expected) {
-        return assertThat(diff(actual, expected)).isLessThan(0.0001);
-    }
-
-    double diff(Complex z1, Complex z2) {
-        return z1.subtract(z2).abs();
+    private boolean aboutEquals(Complex actual, Complex expected) {
+        return Complex.equals(expected, expected, 0.0001);
     }
 
 }
