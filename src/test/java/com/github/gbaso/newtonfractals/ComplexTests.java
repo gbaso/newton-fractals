@@ -30,13 +30,13 @@ class ComplexTests {
 
     @ParameterizedTest
     @CsvSource(textBlock = """
-                    0,          0,          0
-                    1,          0,          1
-                    0,          1,          1
-                    0.7071068,  0.7071068,  1
-                    3,          4,          5
-                    -2,         -7,         7.2801099
-            """)
+		    0,          0,          0
+		    1,          0,          1
+		    0,          1,          1
+		    0.7071068,  0.7071068,  1
+		    3,          4,          5
+		    -2,         -7,         7.2801099
+			""")
     void abs(double x, double y, double expected) {
         var z = new Complex(x, y);
         assertThat(z.abs() - expected).isLessThan(0.00001);
@@ -86,12 +86,12 @@ class ComplexTests {
 
     @ParameterizedTest
     @CsvSource(textBlock = """
-                    0,          0,          0,          0
-                    1,          0,          1,          0
-                    0,          1,          -1,         0
-                    0.7071068,  0.7071068,  0,          1
-                    3,          4,          -7,         24
-                    -2,         -7,         -45,        28
+            0,          0,          0,          0
+            1,          0,          1,          0
+            0,          1,          -1,         0
+            0.7071068,  0.7071068,  0,          1
+            3,          4,          -7,         24
+            -2,         -7,         -45,        28
             """)
     void square(double x, double y, double rx, double ry) {
         var z = new Complex(x, y);
@@ -101,11 +101,11 @@ class ComplexTests {
 
     @ParameterizedTest
     @CsvSource(textBlock = """
-                    1,          0,          1,          0
-                    0,          1,          0,          -1
-                    0.7071068,  0.7071068,  0.7071068,  -0.7071068
-                    3,          4,          0.12,        -0.16
-                    -2,         -7,         -0.037736,  0.13207548
+            1,          0,          1,          0
+            0,          1,          0,          -1
+            0.7071068,  0.7071068,  0.7071068,  -0.7071068
+            3,          4,          0.12,        -0.16
+            -2,         -7,         -0.037736,  0.13207548
             """)
     void reciprocal(double x, double y, double rx, double ry) {
         var z = new Complex(x, y);
@@ -115,15 +115,15 @@ class ComplexTests {
 
     @ParameterizedTest
     @CsvSource(textBlock = """
-                    0,          0,          0,          0,          0
-                    0,          0,          1,          0,          0
-                    1,          0,          0,          0,          0
-                    1,          0,          1,          1,          0
-                    0,          1,          0,          0,          0
-                    0,          1,          1,          0,          1
-                    0.7071068,  0.7071068,  1.4142135,  1,          1
-                    3,          4,          -2,         -6,         -8
-                    -2,         -7,         0.2,        -0.4,       -1.4
+            0,          0,          0,          0,          0
+            0,          0,          1,          0,          0
+            1,          0,          0,          0,          0
+            1,          0,          1,          1,          0
+            0,          1,          0,          0,          0
+            0,          1,          1,          0,          1
+            0.7071068,  0.7071068,  1.4142135,  1,          1
+            3,          4,          -2,         -6,         -8
+            -2,         -7,         0.2,        -0.4,       -1.4
             """)
     void multiply(double x, double y, double factor, double rx, double ry) {
         var z = new Complex(x, y);
