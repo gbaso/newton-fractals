@@ -1,13 +1,12 @@
-package com.github.gbaso.newtonfractals.commons;
+package com.github.gbaso.newtonfractals.mutable;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.apache.commons.math3.complex.Complex;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class CommonsComplexTests {
+class ComplexTest {
 
     @Test
     void string() {
@@ -52,7 +51,7 @@ class CommonsComplexTests {
             """)
     void negate(double x, double y) {
         var z = new Complex(x, y);
-        var w = z.negate();
+        Complex w = z.negate();
         assertThat(w.getReal()).isEqualTo(-x);
         assertThat(w.getImaginary()).isEqualTo(-y);
     }
